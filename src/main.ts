@@ -1,6 +1,11 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { AppComponent } from './app/app';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app/app.routes';
+import { provideRouter } from '@angular/router';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+//decimos que vamos a usar HTTPCLient
+bootstrapApplication(AppComponent, {
+  providers: [provideHttpClient(), provideRouter(routes)] //Con esto, HttpClient ya se puede inyectar en servicios y componentes.
+},).catch((err) => console.error(err));
+

@@ -1,0 +1,14 @@
+<h1>Posts</h1>
+
+<!--lista donde vamos a pintar los posts-->
+<ul>
+  <!--recorremos el array de post que tenemos, async recibe los datos y angular ejecuta el bucle y pinta los datos-->
+  @for (p of posts$ | async; track p.id) {
+    <li>
+      <!--cuando pincho nos lleva a /posts-->
+      <a [routerLink]="['/posts', p.id]">{{ p.title }}</a>
+    </li>
+  } @empty { <!--se ejecuta solo si la lista esta vacia-->
+    <li>No hay posts</li>
+  }
+</ul>
