@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
 
       - run: npm ci
-      - run: npm run build -- --configuration production
+      - run: npm run build -- --configuration production --base-href /angular/
 
       - name: Inspect dist
         run: |
