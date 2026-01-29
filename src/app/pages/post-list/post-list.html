@@ -1,14 +1,23 @@
-<h1>Posts</h1>
+<header class="top">
+  <h1>Posts</h1>
+  <a class="btn" routerLink="/posts/new">+ Nuevo post</a>
+</header>
 
-<!--lista donde vamos a pintar los posts-->
-<ul>
-  <!--recorremos el array de post que tenemos, async recibe los datos y angular ejecuta el bucle y pinta los datos-->
-  @for (p of posts$ | async; track p.id) {
-    <li>
-      <!--cuando pincho nos lleva a /posts-->
+<div class="search">
+  <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Buscar por título o contenido…"
+  />
+</div>
+
+<ul class="list">
+  @for (p of filteredPosts$ | async; track p.id) {
+    <li class="item">
       <a [routerLink]="['/posts', p.id]">{{ p.title }}</a>
+      <p class="body">{{ p.body }}</p>
     </li>
-  } @empty { <!--se ejecuta solo si la lista esta vacia-->
+  } @empty {
     <li>No hay posts</li>
   }
 </ul>

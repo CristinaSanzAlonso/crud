@@ -34,4 +34,8 @@ export class PostService {
     return this.http.post<Post>(this.url, post);
   }
 
+  update(id: number, post: Post){
+    return this.http.put<Post>(`${this.url}/${id}`, post);
+  }
+
 }
